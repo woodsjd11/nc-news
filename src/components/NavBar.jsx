@@ -1,11 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
 export default function NavBar({ setCurrentTopic }) {
+  let navigate = useNavigate()
+
+  function handleChange(value) {
+    navigate(`/topics/${value}`);
+  }
   return (
     <nav>
-      <button>All Artcles</button>
+      <button>All Articles</button>
       <label htmlFor="topics">Select Topic: </label>
       <select
         name="topics"
         onChange={(e) => {
+          handleChange(e.target.value)
           setCurrentTopic(e.target.value);
         }}
       >
