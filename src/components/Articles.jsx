@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [likeCount, setLikeCount] = useState();
 
   useEffect(() => {
     setIsLoading(true);
@@ -12,6 +13,8 @@ export default function Articles() {
       setIsLoading(false);
     });
   }, []);
+
+
   return isLoading ? (
     <p>Loading Content...</p>
   ) : (
@@ -24,6 +27,10 @@ export default function Articles() {
           >
             <h2>{article.title}</h2>
             <p>Author: {article.author}</p>
+            <button>View Article</button>
+            <button value={article.votes}>
+              {article.votes} Likes
+            </button>
           </li>
         );
       })}
