@@ -1,9 +1,14 @@
-export default function NavBar() {
+export default function NavBar({ setCurrentTopic }) {
   return (
     <nav>
       <button>All Artcles</button>
       <label htmlFor="topics">Select Topic: </label>
-      <select name="topics">
+      <select
+        name="topics"
+        onChange={(e) => {
+          setCurrentTopic(e.target.value);
+        }}
+      >
         <option value="coding">Coding</option>
         <option value="football">Football</option>
         <option value="cooking">Cooking</option>
