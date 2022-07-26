@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function NavBar({ setCurrentTopic }) {
+export default function NavBar() {
   return (
     <nav className="navbar">
       <Link to="/">All Articles</Link>
@@ -15,7 +15,7 @@ export default function NavBar({ setCurrentTopic }) {
         </div>
       </div>
       <div className="sortby">
-      <label htmlFor="sortby">Sort By: </label>
+        <label htmlFor="sortby">Sort By: </label>
         <select name="sortby">
           <option value="titleasc">Title (A-Z)</option>
           <option value="titledesc">Title (Z-A)</option>
