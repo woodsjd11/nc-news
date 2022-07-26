@@ -14,6 +14,6 @@ export const fetchArticles = (currentTopic) => {
 
 export const fetchArticlebyId = (id) => {
   return instance.get(`/articles/${id}`).then((response) => {
-    return response.data.article
+    return response.data.article;
   });
 };

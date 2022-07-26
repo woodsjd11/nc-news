@@ -7,16 +7,25 @@ export default function Article() {
   const [currentArticle, setCurrentArticle] = useState();
   const [articleDate, setArticleDate] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticlebyId(article_id).then((response) => {
-      setCurrentArticle(response);
-      setArticleDate(response.created_at);
-      setIsLoading(false);
-    });
+    api
+      .fetchArticlebyId(article_id)
+      .then((response) => {
+        setCurrentArticle(response);
+        setArticleDate(response.created_at);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.response.data);
+      });
   }, []);
-
+  // guard statement
+  if (error) {
+    return <p>{error.message}</p>;
+  }
   return isLoading ? (
     <p>Loading Content...</p>
   ) : (
