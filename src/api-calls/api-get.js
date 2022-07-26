@@ -11,3 +11,9 @@ export const fetchArticles = (currentTopic) => {
       return response.data.articles;
     });
 };
+
+export const fetchArticlebyId = (id) => {
+  return instance.get(`/articles/${id}`).then((response) => {
+    return response.data.article
+  });
+};
