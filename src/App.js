@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
-import Articles from "./components/Articles";
+import Articles from "./components/ArticlesList";
+import Article from "./components/Article";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -18,8 +19,12 @@ function App() {
             element={<Articles currentTopic={currentTopic} />}
           ></Route>
           <Route
-            path="/topics/:topic"
+            path="/articles/:topic"
             element={<Articles currentTopic={currentTopic} />}
+          ></Route>
+          <Route
+            path="/article/:article_id"
+            element={<Article />}
           ></Route>
         </Routes>
       </div>
