@@ -9,9 +9,9 @@ export default function NavBar({ setCurrentTopic }) {
           Select Topic
         </button>
         <div className="dropdown-content">
-          <Link to="/topics/coding">Coding</Link>
-          <Link to="/topics/cooking">Cooking</Link>
-          <Link to="/topics/football">Football</Link>
+          <Link to="/articles/coding">Coding</Link>
+          <Link to="/articles/cooking">Cooking</Link>
+          <Link to="/articles/football">Football</Link>
         </div>
       </div>
       <div className="sortby">

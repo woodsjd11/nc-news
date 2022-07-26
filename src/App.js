@@ -18,7 +18,7 @@ function App() {
             element={<Articles currentTopic={currentTopic} />}
           ></Route>
           <Route
-            path="/topics/:topic"
+            path="/articles/:topic"
             element={<Articles currentTopic={currentTopic} />}
           ></Route>
         </Routes>
