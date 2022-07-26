@@ -9,9 +9,7 @@ export default function ArticlesList({ currentTopic }) {
 
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  //functionality will be added
-  const [likeCount, setLikeCount] = useState();
-
+ 
   useEffect(() => {
     setIsLoading(true);
     api.fetchArticles(currentTopic).then((articleData) => {
@@ -32,7 +30,7 @@ export default function ArticlesList({ currentTopic }) {
           >
             <h3>{article.title}</h3>
             <p>Author: {article.author}</p>
-            <Link to={`/articles/${article.article_id}`}>View Article</Link>
+            <Link to={`/article/${article.article_id}`}>View Article</Link>
             <button value={article.votes}>{article.votes} Likes</button>
           </li>
         );
