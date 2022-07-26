@@ -1,6 +1,7 @@
 import * as api from "../api-calls/api-get";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import LikeButton from "../components/LikeButton";
 
 export default function Articles({ currentTopic }) {
   const { topic } = useParams();
@@ -9,8 +10,6 @@ export default function Articles({ currentTopic }) {
 
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  //functionality will be added
-  const [likeCount, setLikeCount] = useState();
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,7 +32,8 @@ export default function Articles({ currentTopic }) {
             <h2>{article.title}</h2>
             <p>Author: {article.author}</p>
             <button>View Article</button>
-            <button value={article.votes}>{article.votes} Likes</button>
+            {/* <button value={article.votes}>{article.votes} Likes</button> */}
+            <LikeButton value={article.votes} id={article.article_id} />
           </li>
         );
       })}
