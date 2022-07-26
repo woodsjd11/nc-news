@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function NavBar({ setCurrentTopic }) {
   let navigate = useNavigate()
@@ -8,7 +8,7 @@ export default function NavBar({ setCurrentTopic }) {
   }
   return (
     <nav>
-      <button>All Articles</button>
+      <Link to="/">All Articles</Link>
       <label htmlFor="topics">Select Topic: </label>
       <select
         name="topics"
