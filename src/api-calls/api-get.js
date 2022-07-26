@@ -17,3 +17,9 @@ export const fetchArticlebyId = (id) => {
     return response.data.article;
   });
 };
+
+export const fetchCommentsByArticleId = (id) => {
+  return instance.get(`/articles/${id}/comments`).then((response) => {
+    return response.data.comments;
+  });
+};

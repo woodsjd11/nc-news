@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as api from "../api-calls/api-get";
 import { useParams } from "react-router-dom";
+import Comments from "./Comments"
 
 export default function Article() {
   const { article_id } = useParams();
@@ -22,6 +23,8 @@ export default function Article() {
         setError(err.response.data);
       });
   }, []);
+
+
   // guard statement
   if (error) {
     return <p>{error.message}</p>;
@@ -36,7 +39,7 @@ export default function Article() {
       <p>{currentArticle.body}</p>
       {/* like button and comment buttons are currently only aesthetic */}
       <button>Like</button>
-      <button>View Comments ({currentArticle.comment_count})</button>
+      <Comments currentArticle={currentArticle} id={article_id}/>
     </div>
   );
 }
