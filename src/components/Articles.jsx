@@ -14,12 +14,7 @@ export default function Articles({ currentTopic }) {
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticles().then((articleData) => {
-      if (currentTopic) {
-        articleData = articleData.filter((article) => {
-          return article.topic === currentTopic;
-        });
-      }
+    api.fetchArticles(currentTopic).then((articleData) => {
       setArticles(articleData);
       setIsLoading(false);
     });
