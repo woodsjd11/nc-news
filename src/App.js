@@ -2,16 +2,25 @@ import "./App.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Articles from "./components/Articles";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+  const [currentTopic, setCurrentTopic] = useState();
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
-        <NavBar />
+        <NavBar setCurrentTopic={setCurrentTopic} />
         <Routes>
-          <Route path="/" element={<Articles />}></Route>
+          <Route
+            path="/"
+            element={<Articles currentTopic={currentTopic} />}
+          ></Route>
+          <Route
+            path="/topics/:topic"
+            element={<Articles currentTopic={currentTopic} />}
+          ></Route>
         </Routes>
       </div>
     </BrowserRouter>
