@@ -8,25 +8,34 @@ export default function SubmitComment({ id, setComments }) {
 
   const { user } = useContext(UserContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const commentObj = {
-      author: user.username,
-      body: commentForSubmit,
-      // "just now" used for optimistic rendering
-      created_at: "(Just Now)",
-    };
-    setComments((currentComments) => {
-      return [commentObj, ...currentComments];
-    });
-    api
-      .createCommentByArticleId(id, {
+
+    try {
+      if (commentForSubmit.length < 11) {
+        throw {
+          response: {
+            data: { message: "Message requires more than 10 characters" },
+          },
+        };
+      }
+
+      const commentObj = {
+        author: user.username,
+        body: commentForSubmit,
+        // "just now" used for optimistic rendering
+        created_at: "(Just Now)",
+      };
+      setComments((currentComments) => {
+        return [commentObj, ...currentComments];
+      });
+      const response = await api.createCommentByArticleId(id, {
         body: commentForSubmit,
         username: user.username,
-      })
-      .catch((err) => {
-        setError(err);
       });
+    } catch (err) {
+      setError(err);
+    }
     setCommentForSubmit("");
   };
 
