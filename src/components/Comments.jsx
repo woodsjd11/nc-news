@@ -14,6 +14,15 @@ export default function Comments({ currentArticle, id }) {
     });
   }, []);
 
+  //handle date formatting
+  function formatDate(comment) {
+    const commentDate = comment.created_at;
+    const formattedDate = /^\d{4}/.test(commentDate)
+      ? commentDate.split("T")[0].split("-").reverse().join("-")
+      : commentDate;
+    return formattedDate;
+  }
+
   return (
     <div>
       <button
@@ -33,12 +42,7 @@ export default function Comments({ currentArticle, id }) {
             <div>
               <ul style={{ listStyle: "none" }}>
                 {comments.map((comment) => {
-                  const commentDate = comment.created_at;
-                  // provides same result on re-render
-                  const formattedDate = /^\d{4}/.test(commentDate)
-                    ? commentDate.split("T")[0].split("-").reverse().join("-")
-                    : commentDate;
-                  comment.created_at = formattedDate;
+                  comment.created_at = formatDate(comment);
                   return (
                     <li key={comment.comment_id}>
                       <p>
