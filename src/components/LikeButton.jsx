@@ -25,7 +25,9 @@ const LikeButton = ({ value, id }) => {
         className={`like-button ${isClicked && "liked"}`}
         onClick={handleClick}
       >
-        <span className="likes-counter">{`Like | ${likes}`}</span>
+        <span className="likes-counter">
+          {!isClicked ? "Like" : "Unlike"} {`| ${likes}`}
+        </span>
       </button>
       {error && <p>Error: 'Like' was not able to be sent</p>}
     </>
