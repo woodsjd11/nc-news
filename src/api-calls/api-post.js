@@ -5,5 +5,6 @@ const instance = axios.create({
 });
 
 export const createCommentByArticleId = (id, comment) => {
+    console.log(comment)
   return instance.post(`/articles/${id}/comments`, comment);
 };
