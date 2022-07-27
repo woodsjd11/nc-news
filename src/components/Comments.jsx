@@ -48,7 +48,10 @@ export default function Comments({ currentArticle, id }) {
               />
               <ul style={{ listStyle: "none" }}>
                 {comments.map((comment) => {
-                  comment.created_at = formatDate(comment);
+                  // "just now" used for optimistic rendering
+                  if (comment.created_at !== "(Just Now)") {
+                    comment.created_at = formatDate(comment);
+                  }
                   return (
                     <li key={comment.comment_id}>
                       <p>
