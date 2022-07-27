@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import LikeButton from "../components/LikeButton";
 
-export default function ArticlesList({ currentTopic }) {
+export default function ArticlesList({ currentTopic, sortBy }) {
   const { topic } = useParams();
   //allows topic filtering to work when user manually updates url
   currentTopic = topic;
@@ -12,11 +12,11 @@ export default function ArticlesList({ currentTopic }) {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticles(currentTopic).then((articleData) => {
+    api.fetchArticles(currentTopic, sortBy).then((articleData) => {
       setArticles(articleData);
       setIsLoading(false);
     });
-  }, [currentTopic]);
+  }, [currentTopic, sortBy]);
 
   return isLoading ? (
     <p>Loading Content...</p>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import SortBy from "./SortBy";
 
-export default function NavBar() {
+export default function NavBar({ setSortBy }) {
   return (
     <nav className="navbar">
       <Link to="/">All Articles</Link>
@@ -14,17 +15,7 @@ export default function NavBar() {
           <Link to="/articles/football">Football</Link>
         </div>
       </div>
-      <div className="sortby">
-        <label htmlFor="sortby">Sort By: </label>
-        <select name="sortby">
-          <option value="titleasc">Title (A-Z)</option>
-          <option value="titledesc">Title (Z-A)</option>
-          <option value="pubdateasc">Publication Date (old to new)</option>
-          <option value="pubdatedesc">Publication Date (new to old)</option>
-          <option value="votesasc">Votes (high to low)</option>
-          <option value="votesdesc">Votes (low to high)</option>
-        </select>
-      </div>
+      <SortBy setSortBy={setSortBy} />
     </nav>
   );
 }

@@ -8,24 +8,23 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const [currentTopic, setCurrentTopic] = useState();
+  //new articles as sortby default
+  const [sortBy, setSortBy] = useState("created_at&order=desc");
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
-        <NavBar setCurrentTopic={setCurrentTopic} />
+        <NavBar setCurrentTopic={setCurrentTopic} setSortBy={setSortBy} />
         <Routes>
           <Route
             path="/"
-            element={<Articles currentTopic={currentTopic} />}
+            element={<Articles currentTopic={currentTopic} sortBy={sortBy}/>}
           ></Route>
           <Route
             path="/articles/:topic"
-            element={<Articles currentTopic={currentTopic} />}
+            element={<Articles currentTopic={currentTopic} sortBy={sortBy}/>}
           ></Route>
-          <Route
-            path="/article/:article_id"
-            element={<Article />}
-          ></Route>
+          <Route path="/article/:article_id" element={<Article />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
