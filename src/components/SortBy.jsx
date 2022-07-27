@@ -1,6 +1,7 @@
 export default function SortBy({ setSortBy }) {
   const handleChange = (e) => {
     setSortBy(e.target.value);
+
   };
 
   return (
