@@ -12,6 +12,7 @@ export default function SubmitComment({ id, setComments }) {
     e.preventDefault();
 
     try {
+      setError(null);
       if (commentForSubmit.length < 11) {
         throw {
           response: {
