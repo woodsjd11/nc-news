@@ -1,9 +1,11 @@
 #header {
-    color: #fdf0d5;
-    font-family: brush script mt;
-    font-size: 40px;
-    background-color: #003049;
+  color: #fdf0d5;
+  font-family: brush script mt;
+  font-size: 40px;
+  background-color: #003049;
+  position: fixed;
+  width:100%;
 }
 #header h1 {
-    margin: 0em;
+  margin: 0em;
 }
