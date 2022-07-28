@@ -34,10 +34,10 @@ export default function SubmitComment({ id, setComments }) {
         body: commentForSubmit,
         username: user.username,
       });
+      setCommentForSubmit("");
     } catch (err) {
       setError(err);
     }
-    setCommentForSubmit("");
   };
 
   return (
