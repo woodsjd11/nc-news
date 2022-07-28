@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import * as api from "../api-calls/api-get";
 import DeleteComment from "./DeleteComment";
 
-
 export default function Comments({ currentArticle, id }) {
   const [comments, setComments] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -53,7 +52,11 @@ export default function Comments({ currentArticle, id }) {
                         </u>
                       </p>
                       <p>{comment.body}</p>
-                      <DeleteComment commentId={comment.comment_id}/>
+                      <DeleteComment
+                        commentId={comment.comment_id}
+                        setComments={setComments}
+                        comments={comments}
+                      />
                     </li>
                   );
                 })}
