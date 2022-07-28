@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import SortBy from "./SortBy";
 
-export default function NavBar({ setSortBy }) {
-  const handleClick = () => {
-    setSortBy("created_at&order=desc");
-  };
+export default function NavBar() {
+ 
 
   return (
     <nav className="navbar">
-      <Link to="/" onClick={handleClick}>
+      <Link to="/" >
         All Articles
       </Link>
       <div className="dropdown">
@@ -16,18 +14,18 @@ export default function NavBar({ setSortBy }) {
           Select Topic
         </button>
         <div className="dropdown-content">
-          <Link to="/articles/coding" onClick={handleClick}>
+          <Link to="/articles/coding" >
             Coding
           </Link>
-          <Link to="/articles/cooking" onClick={handleClick}>
+          <Link to="/articles/cooking" >
             Cooking
           </Link>
-          <Link to="/articles/football" onClick={handleClick}>
+          <Link to="/articles/football" >
             Football
           </Link>
         </div>
       </div>
-      <SortBy setSortBy={setSortBy} />
+      <SortBy />
     </nav>
   );
 }

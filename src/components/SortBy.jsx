@@ -1,7 +1,15 @@
-export default function SortBy({ setSortBy }) {
-  const handleChange = (e) => {
-    setSortBy(e.target.value);
+import { useSearchParams } from "react-router-dom";
 
+export default function SortBy() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const newParams = {
+      sort_by: value.split("&order=")[0],
+      order: value.split("&order=")[1],
+    };
+    setSearchParams(newParams);
   };
 
   return (
