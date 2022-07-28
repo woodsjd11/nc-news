@@ -16,7 +16,7 @@ export default function Comments({ currentArticle, id }) {
       setComments(response);
       setIsLoading(false);
     });
-  }, []);
+  }, [setComments]);
 
   //handle date formatting
   function formatDate(comment) {

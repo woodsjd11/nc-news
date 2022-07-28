@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import * as api from "../api-calls/api-post";
+import { fetchCommentsByArticleId } from "../api-calls/api-get";
 import { UserContext } from "../Contexts/UserContext";
 
 export default function SubmitComment({ id, setComments }) {
@@ -34,6 +35,9 @@ export default function SubmitComment({ id, setComments }) {
         body: commentForSubmit,
         username: user.username,
       });
+      //update comments once api request has succeeded
+      const apiComments = await fetchCommentsByArticleId(id);
+      setComments(apiComments);
       setCommentForSubmit("");
     } catch (err) {
       setError(err);
