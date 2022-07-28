@@ -3,7 +3,7 @@ import * as api from "../api-calls/api-post";
 import { fetchCommentsByArticleId } from "../api-calls/api-get";
 import { UserContext } from "../Contexts/UserContext";
 
-export default function SubmitComment({ id, setComments }) {
+export default function SubmitComment({ id, setComments, setIsOptimised }) {
   const [commentForSubmit, setCommentForSubmit] = useState("");
   const [error, setError] = useState(null);
 
@@ -13,6 +13,7 @@ export default function SubmitComment({ id, setComments }) {
     e.preventDefault();
 
     try {
+      setIsOptimised(true);
       setError(null);
       if (commentForSubmit.length < 11) {
         throw {
@@ -37,6 +38,7 @@ export default function SubmitComment({ id, setComments }) {
       });
       //update comments once api request has succeeded
       const apiComments = await fetchCommentsByArticleId(id);
+      setIsOptimised(false);
       setComments(apiComments);
       setCommentForSubmit("");
     } catch (err) {

@@ -8,6 +8,9 @@ export default function Comments({ currentArticle, id }) {
   const [comments, setComments] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  // delete button only appears after api runs successfully
+  const [isOptimised, setIsOptimised] = useState(false);
+
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -25,6 +28,13 @@ export default function Comments({ currentArticle, id }) {
       ? commentDate.split("T")[0].split("-").reverse().join("-")
       : commentDate;
     return formattedDate;
+  }
+
+  function deleteCondition(author) {
+    if (user.username === author && !isOptimised) {
+      return true;
+    }
+    return false;
   }
 
   return (
@@ -48,6 +58,7 @@ export default function Comments({ currentArticle, id }) {
                 comments={comments}
                 setComments={setComments}
                 id={id}
+                setIsOptimised={setIsOptimised}
               />
               <ul style={{ listStyle: "none" }}>
                 {comments.map((comment) => {
@@ -64,7 +75,7 @@ export default function Comments({ currentArticle, id }) {
                       </p>
                       <p>{comment.body}</p>
                       {/* user can only delete own comments */}
-                      {user.username === comment.author && (
+                      {deleteCondition(comment.author) && (
                         <DeleteComment
                           commentId={comment.comment_id}
                           setComments={setComments}
