@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import * as api from "../api-calls/api-get";
+import DeleteComment from "./DeleteComment";
 import SubmitComment from "./SubmitComment";
+import { UserContext } from "../Contexts/UserContext";
 
 export default function Comments({ currentArticle, id }) {
   const [comments, setComments] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  // delete button only appears after api runs successfully
+  const [isOptimised, setIsOptimised] = useState(false);
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -13,7 +19,7 @@ export default function Comments({ currentArticle, id }) {
       setComments(response);
       setIsLoading(false);
     });
-  }, []);
+  }, [setComments]);
 
   //handle date formatting
   function formatDate(comment) {
@@ -22,6 +28,13 @@ export default function Comments({ currentArticle, id }) {
       ? commentDate.split("T")[0].split("-").reverse().join("-")
       : commentDate;
     return formattedDate;
+  }
+
+  function deleteCondition(author) {
+    if (user.username === author && !isOptimised) {
+      return true;
+    }
+    return false;
   }
 
   return (
@@ -45,6 +58,7 @@ export default function Comments({ currentArticle, id }) {
                 comments={comments}
                 setComments={setComments}
                 id={id}
+                setIsOptimised={setIsOptimised}
               />
               <ul style={{ listStyle: "none" }}>
                 {comments.map((comment) => {
@@ -60,6 +74,14 @@ export default function Comments({ currentArticle, id }) {
                         </u>
                       </p>
                       <p>{comment.body}</p>
+                      {/* user can only delete own comments */}
+                      {deleteCondition(comment.author) && (
+                        <DeleteComment
+                          commentId={comment.comment_id}
+                          setComments={setComments}
+                          comments={comments}
+                        />
+                      )}
                     </li>
                   );
                 })}
