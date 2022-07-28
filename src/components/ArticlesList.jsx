@@ -3,23 +3,22 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useSearchParams } from "react-router-dom";
 import LikeButton from "../components/LikeButton";
 
-export default function ArticlesList({ currentTopic }) {
+export default function ArticlesList() {
   const { topic } = useParams();
   const [params] = useSearchParams();
   const sortBy = params.get("sort_by");
   const order = params.get("order");
   //allows topic filtering to work when user manually updates url
-  currentTopic = topic;
 
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticles(currentTopic, sortBy, order).then((articleData) => {
+    api.fetchArticles(topic, sortBy, order).then((articleData) => {
       setArticles(articleData);
       setIsLoading(false);
     });
-  }, [currentTopic, sortBy, order]);
+  }, [topic, sortBy, order]);
 
   return isLoading ? (
     <p>Loading Content...</p>
