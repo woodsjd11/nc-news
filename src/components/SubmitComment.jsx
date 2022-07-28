@@ -51,7 +51,10 @@ export default function SubmitComment({ id, setComments }) {
           onChange={(e) => {
             setCommentForSubmit(e.target.value);
           }}
+          size="50"
+          height="50"
         ></input>
+        <button type="submit">Submit</button>
       </form>
       {error && (
         <>
