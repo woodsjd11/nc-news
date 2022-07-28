@@ -1,3 +1,4 @@
+import "../Styling/NavBar.css"
 import { Link } from "react-router-dom";
 import SortBy from "./SortBy";
 import { useState } from "react";
