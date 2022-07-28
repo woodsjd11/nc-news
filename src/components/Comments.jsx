@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as api from "../api-calls/api-get";
+import SubmitComment from "./SubmitComment";
 
 export default function Comments({ currentArticle, id }) {
   const [comments, setComments] = useState();
@@ -40,9 +41,17 @@ export default function Comments({ currentArticle, id }) {
         <>
           {isOpen && (
             <div>
+              <SubmitComment
+                comments={comments}
+                setComments={setComments}
+                id={id}
+              />
               <ul style={{ listStyle: "none" }}>
                 {comments.map((comment) => {
-                  comment.created_at = formatDate(comment);
+                  // "just now" used for optimistic rendering
+                  if (comment.created_at !== "(Just Now)") {
+                    comment.created_at = formatDate(comment);
+                  }
                   return (
                     <li key={comment.comment_id}>
                       <p>
