@@ -8,7 +8,7 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [user, setUser] = useState({
+ const [user, setUser] = useState({
     username: "weegembump",
     name: "Gemma Bump",
     avatar_url:
@@ -18,23 +18,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{ user, setUser }}>
-        <div className="App">
-          <Header />
-          <NavBar setCurrentTopic={setCurrentTopic} />
-          <Routes>
-            <Route
-              path="/"
-              element={<Articles currentTopic={currentTopic} />}
-            ></Route>
-            <Route
-              path="/articles/:topic"
-              element={<Articles currentTopic={currentTopic} />}
-            ></Route>
-            <Route path="/article/:article_id" element={<Article />}></Route>
-          </Routes>
-        </div>
-      </UserContext.Provider>
+     <UserContext.Provider value={{ user, setUser }}>
+      <div className="App">
+        <Header />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Articles />}></Route>
+          <Route path="/articles/:topic" element={<Articles />}></Route>
+          <Route path="/article/:article_id" element={<Article />}></Route>
+        </Routes>
+      </div>
+     </UserContext.Provider>
     </BrowserRouter>
   );
 }
