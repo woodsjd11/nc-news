@@ -1,0 +1,14 @@
+.deletebutton {
+    align-items: center;
+    justify-content: center;
+    width: 10em;
+    height: 2em;
+    margin: 1em;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 0px;
+    background-color: #669bbc;
+    color: #003049;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serifs;
+    font-weight: 700;
+}

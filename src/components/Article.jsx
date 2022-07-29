@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import * as api from "../api-calls/api-get";
 import { useParams } from "react-router-dom";
-import Comments from "./Comments"
+import Comments from "./Comments";
+import "../Styling/Article.css";
 
 export default function Article() {
   const { article_id } = useParams();
@@ -24,7 +25,6 @@ export default function Article() {
       });
   }, []);
 
-
   // guard statement
   if (error) {
     return <p>{error.message}</p>;
@@ -32,14 +32,20 @@ export default function Article() {
   return isLoading ? (
     <p>Loading Content...</p>
   ) : (
-    <div>
+    <div className="singlearticle">
       <h2>{currentArticle.title}</h2>
+      <br />
       <h5>{articleDate.split("T")[0].split("-").reverse().join("-")}</h5>
+      <br />
       <h4>By {currentArticle.author}</h4>
-      <p>{currentArticle.body}</p>
+      <br />
+      <p className="articlebody">{currentArticle.body}</p>
+      <br/>
       {/* like button and comment buttons are currently only aesthetic */}
-      <button>Like</button>
-      <Comments currentArticle={currentArticle} id={article_id}/>
+      <div className="interactiveelems">
+        <button className="likebutton">Like</button>
+        <Comments currentArticle={currentArticle} id={article_id} />
+      </div>
     </div>
   );
 }

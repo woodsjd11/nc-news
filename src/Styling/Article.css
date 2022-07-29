@@ -1,0 +1,37 @@
+.singlearticle {
+  background-color: #fdf0d5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.singlearticle h2 {
+  text-decoration: underline;
+}
+
+.interactiveelems {
+  justify-content: center;
+  font-weight: 900;
+
+}
+
+.likebutton {
+  font-weight: inherit;
+  width: 7em;
+  height: 2.5em;
+  margin: 1em;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 0px;
+  background-color: #c1121f;
+  color: #fdf0d5;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serifs;
+  font-weight: 700;
+}
+
+.articlebody {
+    border-top: 2px solid #780000;
+    border-bottom: 2px solid #780000;
+    padding: 0.5em;
+}

@@ -1,0 +1,13 @@
+input {
+  width: 75%;
+}
+
+.commentsubmit {
+  color: #fdf0d5;
+}
+
+.submitbutton {
+  color: #fdf0d5;
+  background-color: #c1121f;
+  width: 60px;
+}

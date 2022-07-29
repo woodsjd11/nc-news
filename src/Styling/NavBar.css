@@ -7,6 +7,7 @@
   background-color: #c1121f;
   position: fixed;
   width: 100%;
+ font-weight: 600;
 }
 
 .navbar a {
@@ -18,6 +19,7 @@
   text-decoration: none;
   width: 50%;
 }
+
 .sortby {
   float: left;
   font-size: 16px;
@@ -36,7 +38,9 @@
 
 .dropdown .dropbtn {
   font-size: 16px;
+  font-weight: inherit;
   border: none;
+  outline: none;
   outline: none;
   color: #fdf0d5;
   padding: 14.5px 0px;
@@ -53,7 +57,7 @@
 
 .dropdown-content {
   display: none;
-  position:fixed;
+  position: fixed;
   background-color: #ef233c;
   min-width: 160px;
   width: 100%;

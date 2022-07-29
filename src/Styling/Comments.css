@@ -1,0 +1,35 @@
+.commentlist {
+  background-color: #003049;
+  align-items: center;
+}
+
+.commentbutton {
+  font-weight: inherit;
+  width: 15em;
+  height: 2.5em;
+  margin: 1em;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 0px;
+  background-color: #c1121f;
+  color: #fdf0d5;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serifs;
+  font-weight: 700;
+}
+
+.singlecomment {
+  background-color: brown;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.authordate {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #fdf0d5;
+}
+
+.commentbody {
+  color: #669bbc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import * as api from "../api-calls/api-post";
 import { fetchCommentsByArticleId } from "../api-calls/api-get";
 import { UserContext } from "../Contexts/UserContext";
+import "../Styling/SubmitComment.css";
 
 export default function SubmitComment({ id, setComments, setIsOptimised }) {
   const [commentForSubmit, setCommentForSubmit] = useState("");
@@ -48,8 +49,11 @@ export default function SubmitComment({ id, setComments, setIsOptimised }) {
 
   return (
     <>
+      <br />
       <form onSubmit={handleSubmit}>
-        <label htmlFor="commentInput">Insert Comment: </label>
+        <label className="commentsubmit" htmlFor="commentInput">
+          Insert Comment:{" "}
+        </label>
         <input
           type="text"
           name="commentInput"
@@ -57,10 +61,8 @@ export default function SubmitComment({ id, setComments, setIsOptimised }) {
           onChange={(e) => {
             setCommentForSubmit(e.target.value);
           }}
-          size="50"
-          height="50"
         ></input>
-        <button type="submit">Submit</button>
+        <button className="submitbutton"type="submit">Submit</button>
       </form>
       {error && (
         <>
