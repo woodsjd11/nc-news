@@ -67,9 +67,9 @@ export default function SubmitComment({ id, setComments, setIsOptimised }) {
       {error && (
         <>
           <p>
-            <b>Message could not be sent</b>
+            <b className="error">Message could not be sent</b>
           </p>
-          <p style={{ color: "red" }}>
+          <p className="messagerequirement">
             <em>{error.response.data.message}</em>
           </p>
         </>
