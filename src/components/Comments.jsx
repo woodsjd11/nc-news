@@ -3,6 +3,7 @@ import * as api from "../api-calls/api-get";
 import DeleteComment from "./DeleteComment";
 import SubmitComment from "./SubmitComment";
 import { UserContext } from "../Contexts/UserContext";
+import "../Styling/Comments.css";
 
 export default function Comments({ currentArticle, id }) {
   const [comments, setComments] = useState();
@@ -40,6 +41,7 @@ export default function Comments({ currentArticle, id }) {
   return (
     <div>
       <button
+        className="commentbutton"
         value={currentArticle.comment_count}
         onClick={() => {
           setIsOpen(!isOpen);
@@ -48,48 +50,61 @@ export default function Comments({ currentArticle, id }) {
         {!isOpen ? "View Comments" : "Hide Comments"} (
         {currentArticle.comment_count})
       </button>
-      {isLoading ? (
-        <p>Loading Comments</p>
-      ) : (
-        <>
-          {isOpen && (
-            <div>
-              <SubmitComment
-                comments={comments}
-                setComments={setComments}
-                id={id}
-                setIsOptimised={setIsOptimised}
-              />
-              <ul style={{ listStyle: "none" }}>
-                {comments.map((comment) => {
-                  // "just now" used for optimistic rendering
-                  if (comment.created_at !== "(Just Now)") {
-                    comment.created_at = formatDate(comment);
-                  }
-                  return (
-                    <li key={comment.comment_id}>
-                      <p>
-                        <u>
-                          {comment.author} {comment.created_at}
-                        </u>
-                      </p>
-                      <p>{comment.body}</p>
-                      {/* user can only delete own comments */}
-                      {deleteCondition(comment.author) && (
-                        <DeleteComment
-                          commentId={comment.comment_id}
-                          setComments={setComments}
-                          comments={comments}
-                        />
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          )}
-        </>
-      )}
+      <div className="commentlist">
+        {isLoading ? (
+          <p>Loading Comments</p>
+        ) : (
+          <>
+            {isOpen && (
+              <div>
+                <SubmitComment
+                  comments={comments}
+                  setComments={setComments}
+                  id={id}
+                  setIsOptimised={setIsOptimised}
+                />
+                <ul style={{ listStyle: "none" }}>
+                  {comments.map((comment) => {
+                    // "just now" used for optimistic rendering
+                    if (comment.created_at !== "(Just Now)") {
+                      comment.created_at = formatDate(comment);
+                    }
+                    return (
+                      <li className="singlecomment" key={comment.comment_id}>
+                        <p className="authordate">
+                          <u>
+                            {comment.author} {comment.created_at}
+                          </u>
+                        </p>
+                        <br />
+                        <div
+                          className="commentbody"
+                          style={{ flexdirection: "row" }}
+                        >
+                          <p style={{ flex: 1, flexWrap: "wrap" }}>
+                            {comment.body}
+                          </p>
+                        </div>
+                        {/* user can only delete own comments */}
+                        {deleteCondition(comment.author) && (
+                          <>
+                          <br/>
+                          <DeleteComment
+                            commentId={comment.comment_id}
+                            setComments={setComments}
+                            comments={comments}
+                          />
+                          </>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }

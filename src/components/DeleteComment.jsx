@@ -1,4 +1,5 @@
 import * as api from "../api-calls/api-delete";
+import "../Styling/DeleteComment.css";
 
 export default function DeleteComment({ commentId, setComments, comments }) {
   const handleClick = () => {
@@ -9,5 +10,5 @@ export default function DeleteComment({ commentId, setComments, comments }) {
     api.removeCommentById(commentId);
   };
 
-  return <button onClick={handleClick}>Delete Comment</button>;
+  return <button className="deletebutton" onClick={handleClick}>Delete Comment</button>;
 }
