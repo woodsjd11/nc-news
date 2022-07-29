@@ -13,13 +13,25 @@ export default function ArticlesList() {
 
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticles(topic, sortBy, order).then((articleData) => {
-      setArticles(articleData);
-      setIsLoading(false);
-    });
+    api
+      .fetchArticles(topic, sortBy, order)
+      .then((articleData) => {
+        setArticles(articleData);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+      });
   }, [topic, sortBy, order]);
+
+  if (error) {
+    return <p className="errormessage">{error.response.data.message}</p>;
+  }
 
   return isLoading ? (
     <p>Loading Content...</p>
@@ -37,7 +49,12 @@ export default function ArticlesList() {
             <p className="author">Author: {article.author}</p>
             <br />
             <div>
-              <Link className="articlelink" to={`/article/${article.article_id}`}>View Article</Link>
+              <Link
+                className="articlelink"
+                to={`/article/${article.article_id}`}
+              >
+                View Article
+              </Link>
               <LikeButton value={article.votes} id={article.article_id} />
             </div>
           </li>

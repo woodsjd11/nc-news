@@ -27,7 +27,7 @@ export default function Article() {
 
   // guard statement
   if (error) {
-    return <p>{error.message}</p>;
+    return <p className="errormessage">{error.message}</p>;
   }
   return isLoading ? (
     <p>Loading Content...</p>
