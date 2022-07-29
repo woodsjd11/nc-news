@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as api from "../api-calls/api-patch";
+import "../Styling/LikeButton.css"
 
 const LikeButton = ({ value, id }) => {
   const [likes, setLikes] = useState(value);

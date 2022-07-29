@@ -1,0 +1,12 @@
+.like-button {
+  width: 7em;
+  height: 2em;
+  margin: 1em;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 0px;
+  background-color: #c1121f;
+  color: #fdf0d5;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serifs;
+  font-weight: 700;
+}
