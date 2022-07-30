@@ -12,6 +12,20 @@ hosted version: https://newsyon.herokuapp.com/api
 
 Navigate pages with 'all articles', 'select topic' (article topic/category), and sort articles by the dropdown box.
 
+## User stories:
+```
+1) View a list of all articles
+2) View a separate page for each topic with a list of related articles
+3) View an individual article
+4) Vote on an article (upvote and downvote, with a single vote)
+5) View a list of comments associated with an article
+6) Post a new comment to an existing article - for a valid user
+7) Sort articles based on: date, comment count, number of votes
+8) Order articles in ascending or descending order
+9) Delete comments - for a valid user
+10) Have responsive error handling for invalid URL paths
+```
+
 ## Run Locally
 
 First clone the repo. In the CLI cd into the folder which you want the repo to exist. Then run:
@@ -45,3 +59,8 @@ npm install
 
 - Node.js - 18.1.0
 
+Check your current installed version of Node.js:
+
+```
+node --version
+```
